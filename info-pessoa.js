@@ -26,35 +26,29 @@
 
 // console.log(mostrarInfoPessoa(pessoa));
 
-const pessoas = {
-  nome: ["Mateus", "Murilo", "João"],
-  idade: [20, 19, 18],
-  cidade: ["Santo André", "São Paulo", "São Paulo"],
-};
-
-pessoas.nome.push("Tiago");
-pessoas.idade.push(37);
-pessoas.cidade.push("Ribeirão Preto");
+const pessoas = [
+  { nome: "Mateus", idade: 20, cidade: "Santo André" },
+  { nome: "Murilo", idade: 19, cidade: "São Paulo" },
+  { nome: "João", idade: 18, cidade: "São Paulo" },
+];
 
 function mostrarListaPessoas(pessoas) {
-  let mostrar = `
-   Nome: ${pessoas.nome[0]}
-   Idade: ${pessoas.idade[0]}
-   Cidade: ${pessoas.cidade[0]}
-   Nome: ${pessoas.nome[1]}
-   Idade: ${pessoas.idade[1]}
-   Cidade: ${pessoas.cidade[1]}
-   Nome: ${pessoas.nome[2]}
-   Idade: ${pessoas.idade[2]}
-   Cidade: ${pessoas.cidade[2]}
-   Nome: ${pessoas.nome[3]}
-   Idade: ${pessoas.idade[3]}
-   Cidade: ${pessoas.cidade[3]}`
-
-
-   return mostrar;
+  console.log("Lista de Pessoas: ");
+  pessoas.forEach(pessoa => {
+    console.log(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade} anos, Cidade: ${pessoa.cidade}`);
+  });
 };
 
-let visualizar = mostrarListaPessoas(pessoas);
+mostrarListaPessoas(pessoas);
 
-console.log(visualizar);
+pessoas.push({nome: "Tiago", idade: 27, cidade: "Ribeirão Preto"});
+pessoas.push({nome: "Thales", idade: 23, cidade: "São Paulo"});
+
+mostrarListaPessoas(pessoas);
+
+function filtrarPorCidade(pessoas, cidade) {
+  return pessoas.filter(pessoa => pessoa.cidade === cidade);
+};
+
+console.log("Pessoas de São Paulo:");
+console.log(filtrarPorCidade(pessoas, "São Paulo"));
