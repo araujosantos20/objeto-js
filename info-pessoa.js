@@ -16,7 +16,7 @@
 //     Idade ${typeof pessoa.idade}: ${pessoa.idade}
 //     Solteiro ${typeof pessoa.solteiro}: ${pessoa.solteiro}
 //     Hobbies ${typeof pessoa.hobbies}: ${pessoa.hobbies.join(", ")}
-//     Endereço ${typeof pessoa.endereco}: 
+//     Endereço ${typeof pessoa.endereco}:
 //     Rua ${typeof pessoa.endereco.rua}: ${pessoa.endereco.rua}
 //     Cidade ${typeof pessoa.endereco.rua}: ${pessoa.endereco.cidade}
 //     Estado ${typeof pessoa.endereco.rua}: ${pessoa.endereco.estado}`;
@@ -53,31 +53,62 @@
 // console.log("Pessoas de São Paulo:");
 // console.log(filtrarPorCidade(pessoas, "São Paulo"));
 
+// const calculadora = {
+//   soma: function(n1, n2) {
+//     return n1 + n2;
+//   },
+//   subtracao: function(n1, n2) {
+//     return n1 - n2;
+//   },
+//   multiplicacao: function(n1, n2) {
+//     return n1 * n2;
+//   },
+//   divisao: function(n1, n2) {
+//     return n1 / n2;
+//   },
+//   calcularMedia: function(lista) {
+//     const soma = lista.reduce((total, numero) => total + numero, 0);
+//     return soma / lista.length;
+//   },
+// };
 
-const calculadora = {
-  soma: function(n1, n2) {
-    return n1 + n2;
+// console.log("Resultados das operações é:");
+// console.log(`Soma: ${calculadora.soma(3, 3)}`);
+// console.log(`Subtração: ${calculadora.subtracao(3, 3)}`);
+// console.log(`Multiplicação: ${calculadora.multiplicacao(3, 3)}`);
+// console.log(`Divisão: ${calculadora.divisao(3, 3)}`);
+
+// const lista = [10, 4, 30, 15, 6, 7];
+// console.log(calculadora.calcularMedia(lista));
+
+const contaBancaria = {
+  titular: "Mateus dos Santos",
+  saldo: 1200,
+  depositar: function (deposito) {
+    this.saldo += deposito;
   },
-  subtracao: function(n1, n2) {
-    return n1 - n2;
-  },
-  multiplicacao: function(n1, n2) {
-    return n1 * n2;
-  },
-  divisao: function(n1, n2) {
-    return n1 / n2;
-  },
-  calcularMedia: function(lista) {
-    const soma = lista.reduce((total, numero) => total + numero, 0);
-    return soma / lista.length;
+  sacar: function (saque) {
+    if (saque <= this.saldo) {
+      this.saldo -= saque;
+    } else {
+      console.log("Seu saldo é insuficiente para efetuar o saque");
+    }
   },
 };
 
-console.log("Resultados das operações é:");
-console.log(`Soma: ${calculadora.soma(3, 3)}`);
-console.log(`Subtração: ${calculadora.subtracao(3, 3)}`);
-console.log(`Multiplicação: ${calculadora.multiplicacao(3, 3)}`);
-console.log(`Divisão: ${calculadora.divisao(3, 3)}`);
+const cliente = {
+  nome: "Mateus",
+  conta: contaBancaria,
+};
 
-const lista = [10, 4, 30, 15, 6, 7];
-console.log(calculadora.calcularMedia(lista));
+function mostrarSaldo(cliente) {
+  console.log(`Bem-vindo de volta ${cliente.nome}`);
+  console.log(`O seu saldo atual é de ${cliente.conta.saldo}`);
+}
+
+mostrarSaldo(cliente);
+
+cliente.conta.sacar(500);
+console.log(cliente.conta.saldo);
+cliente.conta.depositar(200);
+console.log(cliente.conta.saldo);
