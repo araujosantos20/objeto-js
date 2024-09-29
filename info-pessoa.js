@@ -106,9 +106,7 @@ function mostrarSaldo(cliente) {
   console.log(`O seu saldo atual é de ${cliente.conta.saldo}`);
 }
 
-mostrarSaldo(cliente);
-
 cliente.conta.sacar(500);
-console.log(cliente.conta.saldo);
 cliente.conta.depositar(200);
-console.log(cliente.conta.saldo);
+
+mostrarSaldo(cliente);
