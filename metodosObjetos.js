@@ -45,3 +45,22 @@ if (Object.keys(carro)) {
     console.log(`${car}: ${carro[car]}`);
   }
 }
+
+const carroNovo = {
+  marca: "Lumina Motors",
+  modelo: "Solaris X",
+  ano: 2025,
+  cor: "Azul Elétrico",
+};
+
+const carroComNovosDetalhes = {
+  ...carro,
+  ...carroNovo,
+};
+
+console.log(carroComNovosDetalhes);
+
+carroComNovosDetalhes.modelo = "Orion GT";
+
+console.log("Carro com mudanças novas:");
+console.log(carroComNovosDetalhes);
