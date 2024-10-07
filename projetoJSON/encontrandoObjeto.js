@@ -51,6 +51,7 @@ const biblioteca = [
   },
 ];
 
+// Função para encontrar 1 item do array de acordo com o número do ID
 function encontrarIdLivro(id) {
   return biblioteca.find((livro) => livro.id === id) || null;
 }
@@ -80,6 +81,7 @@ const catalogoFilmes = [
   },
 ];
 
+// Função para filtrar o filmes de acordo com um ano especifico
 function filtrarFilmesPorAno(ano) {
   return catalogoFilmes.filter((filme) => filme.anoLancamento === ano);
 }
@@ -94,6 +96,8 @@ const listaProdutos = [
   { id: 4, nome: "Boné", preco: 15.99 },
 ];
 
+// Função para ordenar em ordem crescente ou descrescente a lista de produtos
+// de acordo com o preco
 function filtrarOrdenarProdutosPorPreco(propriedade) {
   return listaProdutos.sort((a, b) => {
     if (a[propriedade] < b[propriedade]) return -1;
@@ -104,3 +108,30 @@ function filtrarOrdenarProdutosPorPreco(propriedade) {
 
 const ordenarPorPreco = filtrarOrdenarProdutosPorPreco("preco");
 console.log(ordenarPorPreco);
+
+const animais = [
+  { id: 1, nome: "Leão", especie: "Felino", idade: 5 },
+  { id: 2, nome: "Elefante", especie: "Mamífero", idade: 10 },
+  { id: 3, nome: "Pinguim", especie: "Ave", idade: 3 },
+];
+
+function ordemCrescenteAnimais(animal) {
+  return animais.sort((a, b) => {
+    if (a[animal] > b[animal]) return 1;
+    if (a[animal] < b[animal]) return -1;
+    return 0;
+  });
+}
+
+function ordemDecrescenteAnimais(animal) {
+  return animais.sort((a, b) => {
+    if (a[animal] > b[animal]) return -1;
+    if (a[animal] < b[animal]) return 1;
+    return 0;
+  });
+}
+
+const crescente = ordemCrescenteAnimais("nome");
+console.log(crescente);
+const descrescente = ordemDecrescenteAnimais("nome");
+console.log(descrescente);
