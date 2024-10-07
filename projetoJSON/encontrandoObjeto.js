@@ -151,11 +151,16 @@ const departamentos = [
 ];
 
 function encontrarFuncionarioPorId(id) {
-  return (
-    departamentos.find((setor) => setor.id === id) ||
-    "ID de funcionário não existente."
-  );
+  for (const departamento of departamentos) {
+    const funcionarioEncontrado = departamento.funcionarios.find(
+      (funcionario) => funcionario.id === id
+    );
+    if (funcionarioEncontrado) {
+      return funcionarioEncontrado;
+    }
+  }
+  return null;
 }
 
-const encontrarIdFuncionario = encontrarFuncionarioPorId(2);
+const encontrarIdFuncionario = encontrarFuncionarioPorId(201);
 console.log(encontrarIdFuncionario);
