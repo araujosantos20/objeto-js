@@ -98,15 +98,14 @@ const listaProdutos = [
 
 // Função para ordenar em ordem crescente ou descrescente a lista de produtos
 // de acordo com o preco
-function filtrarOrdenarProdutosPorPreco(propriedade) {
-  return listaProdutos.sort((a, b) => {
-    if (a[propriedade] < b[propriedade]) return -1;
-    if (a[propriedade] > b[propriedade]) return 1;
-    return 0;
-  });
+function filtrarOrdenarProdutosPorPreco(maxpreco) {
+  const produtosFiltrados = listaProdutos.filter(
+    (lista) => lista.preco >= maxpreco
+  );
+  return produtosFiltrados.sort((a, b) => a.preco - b.preco);
 }
 
-const ordenarPorPreco = filtrarOrdenarProdutosPorPreco("preco");
+const ordenarPorPreco = filtrarOrdenarProdutosPorPreco(25.0);
 console.log(ordenarPorPreco);
 
 const animais = [
