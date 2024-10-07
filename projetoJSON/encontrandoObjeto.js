@@ -115,26 +115,22 @@ const animais = [
   { id: 3, nome: "Pinguim", especie: "Ave", idade: 3 },
 ];
 
-function ordemCrescenteAnimais(animal) {
-  return animais.sort((a, b) => {
-    if (a[animal] > b[animal]) return 1;
-    if (a[animal] < b[animal]) return -1;
-    return 0;
-  });
+function ordenarAnimais(comparacao) {
+  return animais.sort(comparacao);
 }
 
-function ordemDecrescenteAnimais(animal) {
-  return animais.sort((a, b) => {
-    if (a[animal] > b[animal]) return -1;
-    if (a[animal] < b[animal]) return 1;
-    return 0;
-  });
+function compararIdadeCrescente(a, b) {
+  return a.idade - b.idade;
 }
 
-const crescente = ordemCrescenteAnimais("nome");
+function compararIdadeDecrescente(a, b) {
+  return b.idade - a.idade;
+}
+
+const crescente = ordenarAnimais(compararIdadeCrescente);
 console.log(crescente);
-const descrescente = ordemDecrescenteAnimais("nome");
-console.log(descrescente);
+const decrescente = ordenarAnimais(compararIdadeDecrescente);
+console.log(decrescente);
 
 const departamentos = [
   {
